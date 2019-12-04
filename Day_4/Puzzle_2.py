@@ -41,7 +41,6 @@ def doesDecrease(num):
 matchCount = 0;
 for num in range(startingNum, endingNum):
     if(has2Adjacent(num) and not doesDecrease(num)):
-        print(num);
         matchCount = (matchCount + 1);
 
 print(matchCount);
