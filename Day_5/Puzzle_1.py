@@ -11,12 +11,10 @@ while(currentPos < len(listData)):
 
     immediateParam1 = False;
     immediateParam2 = False;
-    #immediateParam3 = False;
 
     if(opCode > 99):
         immediateParam1 = ((opCode // 100) % 10) == 1;
         immediateParam2 = ((opCode // 1000) % 10) == 1;
-        #immediateParam3 = ((opCode // 10000) % 10) == 1;
         opCode = opCode % 100;
     
     if(opCode == 1):
@@ -36,8 +34,11 @@ while(currentPos < len(listData)):
         listData[listData[currentPos + 1]] = int(input("Enter number for address " + str(listData[currentPos + 1]) + ": "));
         currentPos += 2;
     elif(opCode == 4):
-        # Sets value
-        print("Address " + str(listData[currentPos + 1]) + " contains value: " + str(listData[listData[currentPos + 1]]));
+        # Prints value
+        if(immediateParam1 == True):
+            print("Address " + str(currentPos + 1) + " contains value: " + str(listData[currentPos + 1]));
+        else:
+            print("Address " + str(listData[currentPos + 1]) + " contains value: " + str(listData[listData[currentPos + 1]]));
         currentPos += 2;
     elif(opCode == 99):
         # Finishes
